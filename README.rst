@@ -1437,6 +1437,8 @@ to any key of a file. When set, all values underneath the key that set the
 Note that, while in cleartext, unencrypted content is still added to the
 checksum of the file, and thus cannot be modified outside of sops without
 breaking the file integrity check.
+This behavior can be modified using `--mac-only-encrypted` flag which makes
+sops compute a MAC only over values it encrypted and not all values.
 
 The unencrypted suffix can be set to a different value using the
 ``--unencrypted-suffix`` option.
@@ -1549,6 +1551,8 @@ In addition to authenticating branches of the tree using keys as additional
 data, sops computes a MAC on all the values to ensure that no value has been
 added or removed fraudulently. The MAC is stored encrypted with AES_GCM and
 the data key under tree->`sops`->`mac`.
+This behavior can be modified using `--mac-only-encrypted` flag which makes
+sops compute a MAC only over values it encrypted and not all values.
 
 Motivation
 ----------

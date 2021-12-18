@@ -124,6 +124,7 @@ type creationRule struct {
 	EncryptedSuffix   string     `yaml:"encrypted_suffix"`
 	UnencryptedRegex  string     `yaml:"unencrypted_regex"`
 	EncryptedRegex    string     `yaml:"encrypted_regex"`
+	MACOnlyEncrypted  bool       `yaml:"mac_only_encrypted"`
 }
 
 // Load loads a sops config file into a temporary struct
@@ -143,6 +144,7 @@ type Config struct {
 	EncryptedSuffix   string
 	UnencryptedRegex  string
 	EncryptedRegex    string
+	MACOnlyEncrypted  bool
 	Destination       publish.Destination
 	OmitExtensions    bool
 }
@@ -261,6 +263,7 @@ func configFromRule(rule *creationRule, kmsEncryptionContext map[string]*string)
 		EncryptedSuffix:   rule.EncryptedSuffix,
 		UnencryptedRegex:  rule.UnencryptedRegex,
 		EncryptedRegex:    rule.EncryptedRegex,
+		MACOnlyEncrypted:  rule.MACOnlyEncrypted,
 	}, nil
 }
 
