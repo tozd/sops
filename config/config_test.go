@@ -140,13 +140,36 @@ creation_rules:
           version: fooversion
     `)
 
-var sampleConfigWithRegexParameters = []byte(`
+var sampleConfigWithEncryptedRegexParameters = []byte(`
 creation_rules:
   - path_regex: barbar*
     kms: "1"
     pgp: "2"
     encrypted_regex: "^enc:"
+    `)
+
+var sampleConfigWithUnencryptedRegexParameters = []byte(`
+creation_rules:
+  - path_regex: barbar*
+    kms: "1"
+    pgp: "2"
     unencrypted_regex: "^dec:"
+    `)
+
+var sampleConfigWithEncryptedCommentRegexParameters = []byte(`
+creation_rules:
+  - path_regex: barbar*
+    kms: "1"
+    pgp: "2"
+    encrypted_comment_regex: "sops:enc"
+    `)
+
+var sampleConfigWithUnencryptedCommentRegexParameters = []byte(`
+creation_rules:
+  - path_regex: barbar*
+    kms: "1"
+    pgp: "2"
+    unencrypted_comment_regex: "sops:dec"
     `)
 
 var sampleConfigWithInvalidParameters = []byte(`
@@ -396,15 +419,27 @@ func TestLoadConfigFileWithEncryptedSuffix(t *testing.T) {
 }
 
 func TestLoadConfigFileWithUnencryptedRegex(t *testing.T) {
-	conf, err := parseCreationRuleForFile(parseConfigFile(sampleConfigWithRegexParameters, t), "/conf/path", "barbar", nil)
+	conf, err := parseCreationRuleForFile(parseConfigFile(sampleConfigWithUnencryptedRegexParameters, t), "/conf/path", "barbar", nil)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, "^dec:", conf.UnencryptedRegex)
 }
 
 func TestLoadConfigFileWithEncryptedRegex(t *testing.T) {
-	conf, err := parseCreationRuleForFile(parseConfigFile(sampleConfigWithRegexParameters, t), "/conf/path", "barbar", nil)
+	conf, err := parseCreationRuleForFile(parseConfigFile(sampleConfigWithEncryptedRegexParameters, t), "/conf/path", "barbar", nil)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, "^enc:", conf.EncryptedRegex)
+}
+
+func TestLoadConfigFileWithUnencryptedCommentRegex(t *testing.T) {
+	conf, err := parseCreationRuleForFile(parseConfigFile(sampleConfigWithUnencryptedCommentRegexParameters, t), "/conf/path", "barbar", nil)
+	assert.Equal(t, nil, err)
+	assert.Equal(t, "sops:dec", conf.UnencryptedCommentRegex)
+}
+
+func TestLoadConfigFileWithEncryptedCommentRegex(t *testing.T) {
+	conf, err := parseCreationRuleForFile(parseConfigFile(sampleConfigWithEncryptedCommentRegexParameters, t), "/conf/path", "barbar", nil)
+	assert.Equal(t, nil, err)
+	assert.Equal(t, "sops:enc", conf.EncryptedCommentRegex)
 }
 
 func TestLoadConfigFileWithInvalidParameters(t *testing.T) {
