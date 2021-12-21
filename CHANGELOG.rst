@@ -122,7 +122,7 @@ Bug fixes:
 
 Project changes:
 
-* Change to proper use of go modules, changing to primary module name to `go.mozilla.org/sops/v3`
+* Change to proper use of go modules, changing to primary module name to `github.com/tozd/sops/v3`
 * Change tags to requiring a `v` prefix.
 * Add documentation for `sops updatekeys` command
 
@@ -262,7 +262,7 @@ Project infrastructure changes:
 
 * Don't consider io.EOF returned by Decoder.Token as error
 
-* add IsBinary: true to FileHints when encoding with crypto/openpgp 
+* add IsBinary: true to FileHints when encoding with crypto/openpgp
 
 * some improvements to error messages
 
@@ -287,7 +287,7 @@ Project infrastructure changes:
   **WARNING** this change breaks backward compatibility.
   SOPS shows an error message with instructions on how to solve
   this if it happens.
-  
+
 * Added command to reconfigure the keys used to encrypt/decrypt a file based on the .sops.yaml config file
 
 * Retrieve missing PGP keys from gpg.mozilla.org

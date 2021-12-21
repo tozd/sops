@@ -1,4 +1,4 @@
-package dotenv //import "go.mozilla.org/sops/v3/stores/dotenv"
+package dotenv //import "github.com/tozd/sops/v3/stores/dotenv"
 
 import (
 	"bytes"
@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"go.mozilla.org/sops/v3"
-	"go.mozilla.org/sops/v3/stores"
+	"github.com/tozd/sops/v3"
+	"github.com/tozd/sops/v3/stores"
 )
 
 // SopsPrefix is the prefix for all metadatada entry keys

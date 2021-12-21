@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-PROJECT		:= go.mozilla.org/sops/v3
+PROJECT		:= github.com/tozd/sops/v3
 GO 		:= GOPROXY=https://proxy.golang.org go
 GOLINT 		:= golint
 
@@ -10,7 +10,7 @@ all: test vet generate install functional-tests
 origin-build: test vet generate install functional-tests-all
 
 install:
-	$(GO) install go.mozilla.org/sops/v3/cmd/sops
+	$(GO) install github.com/tozd/sops/v3/cmd/sops
 
 tag: all
 	git tag -s $(TAGVER) -a -m "$(TAGMSG)"
@@ -39,13 +39,13 @@ generate: keyservice/keyservice.pb.go
 	protoc --go_out=plugins=grpc:. $<
 
 functional-tests:
-	$(GO) build -o functional-tests/sops go.mozilla.org/sops/v3/cmd/sops
+	$(GO) build -o functional-tests/sops github.com/tozd/sops/v3/cmd/sops
 	cd functional-tests && cargo test
 
 # Ignored tests are ones that require external services (e.g. AWS KMS)
 # 	TODO: Once `--include-ignored` lands in rust stable, switch to that.
 functional-tests-all:
-	$(GO) build -o functional-tests/sops go.mozilla.org/sops/v3/cmd/sops
+	$(GO) build -o functional-tests/sops github.com/tozd/sops/v3/cmd/sops
 	cd functional-tests && cargo test && cargo test -- --ignored
 
 # Creates variables during target re-definition. Basically this block allows the particular variables to be used in the final target
@@ -56,7 +56,7 @@ build-deb-%: FPM_ARCH = $(word 3,$(subst -, ,$*))
 build-deb-%:
 	rm -rf tmppkg
 	mkdir -p tmppkg/usr/local/bin
-	GOOS=$(OS) GOARCH="$(ARCH)" CGO_ENABLED=0 go build -mod vendor -o tmppkg/usr/local/bin/sops go.mozilla.org/sops/v3/cmd/sops
+	GOOS=$(OS) GOARCH="$(ARCH)" CGO_ENABLED=0 go build -mod vendor -o tmppkg/usr/local/bin/sops github.com/tozd/sops/v3/cmd/sops
 	fpm -C tmppkg -n sops --license MPL2.0 --vendor mozilla \
 		--description "Sops is an editor of encrypted files that supports YAML, JSON and BINARY formats and encrypts with AWS KMS and PGP." \
 		-m "AJ Bahnken <ajvb+sops@mozilla.com>" \
@@ -76,7 +76,7 @@ build-rpm-%: FPM_ARCH = $(word 3,$(subst -, ,$*))
 build-rpm-%:
 	rm -rf tmppkg
 	mkdir -p tmppkg/usr/local/bin
-	GOOS=$(OS) GOARCH="$(ARCH)" CGO_ENABLED=0 go build -mod vendor -o tmppkg/usr/local/bin/sops go.mozilla.org/sops/v3/cmd/sops
+	GOOS=$(OS) GOARCH="$(ARCH)" CGO_ENABLED=0 go build -mod vendor -o tmppkg/usr/local/bin/sops github.com/tozd/sops/v3/cmd/sops
 	fpm -C tmppkg -n sops --license MPL2.0 --vendor mozilla \
 		--description "Sops is an editor of encrypted files that supports YAML, JSON and BINARY formats and encrypts with AWS KMS and PGP." \
 		-m "AJ Bahnken <ajvb+sops@mozilla.com>" \

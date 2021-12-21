@@ -7,13 +7,13 @@ package keyservice
 import (
 	"fmt"
 
-	"go.mozilla.org/sops/v3/age"
-	"go.mozilla.org/sops/v3/azkv"
-	"go.mozilla.org/sops/v3/gcpkms"
-	"go.mozilla.org/sops/v3/hcvault"
-	"go.mozilla.org/sops/v3/keys"
-	"go.mozilla.org/sops/v3/kms"
-	"go.mozilla.org/sops/v3/pgp"
+	"github.com/tozd/sops/v3/age"
+	"github.com/tozd/sops/v3/azkv"
+	"github.com/tozd/sops/v3/gcpkms"
+	"github.com/tozd/sops/v3/hcvault"
+	"github.com/tozd/sops/v3/keys"
+	"github.com/tozd/sops/v3/kms"
+	"github.com/tozd/sops/v3/pgp"
 )
 
 // KeyFromMasterKey converts a SOPS internal MasterKey to an RPC Key that can be serialized with Protocol Buffers

@@ -7,7 +7,7 @@ import (
 	"testing/quick"
 
 	"github.com/stretchr/testify/assert"
-	"go.mozilla.org/sops/v3"
+	"github.com/tozd/sops/v3"
 )
 
 func TestDecrypt(t *testing.T) {

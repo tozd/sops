@@ -17,11 +17,11 @@ import (
 	"path/filepath"
 
 	"github.com/google/shlex"
-	"go.mozilla.org/sops/v3"
-	"go.mozilla.org/sops/v3/cmd/sops/codes"
-	"go.mozilla.org/sops/v3/cmd/sops/common"
-	"go.mozilla.org/sops/v3/keyservice"
-	"go.mozilla.org/sops/v3/version"
+	"github.com/tozd/sops/v3"
+	"github.com/tozd/sops/v3/cmd/sops/codes"
+	"github.com/tozd/sops/v3/cmd/sops/common"
+	"github.com/tozd/sops/v3/keyservice"
+	"github.com/tozd/sops/v3/version"
 )
 
 type editOpts struct {

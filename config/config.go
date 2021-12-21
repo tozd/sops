@@ -1,7 +1,7 @@
 /*
 Package config provides a way to find and load SOPS configuration files
 */
-package config //import "go.mozilla.org/sops/v3/config"
+package config //import "github.com/tozd/sops/v3/config"
 
 import (
 	"fmt"
@@ -13,15 +13,15 @@ import (
 	"strings"
 
 	"github.com/sirupsen/logrus"
-	"go.mozilla.org/sops/v3"
-	"go.mozilla.org/sops/v3/age"
-	"go.mozilla.org/sops/v3/azkv"
-	"go.mozilla.org/sops/v3/gcpkms"
-	"go.mozilla.org/sops/v3/hcvault"
-	"go.mozilla.org/sops/v3/kms"
-	"go.mozilla.org/sops/v3/logging"
-	"go.mozilla.org/sops/v3/pgp"
-	"go.mozilla.org/sops/v3/publish"
+	"github.com/tozd/sops/v3"
+	"github.com/tozd/sops/v3/age"
+	"github.com/tozd/sops/v3/azkv"
+	"github.com/tozd/sops/v3/gcpkms"
+	"github.com/tozd/sops/v3/hcvault"
+	"github.com/tozd/sops/v3/kms"
+	"github.com/tozd/sops/v3/logging"
+	"github.com/tozd/sops/v3/pgp"
+	"github.com/tozd/sops/v3/publish"
 	"gopkg.in/yaml.v3"
 )
 

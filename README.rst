@@ -1,6 +1,21 @@
 SOPS: Secrets OPerationS
 ========================
 
+This is a fork of `go.mozilla.org/sops <https://github.com/mozilla/sops>`_ and extends it with
+the following features:
+
+* `Support using comments to select parts to encrypt <https://github.com/mozilla/sops/pull/974>`_
+* `Add --mac-only-encrypted to compute MAC only over values which end up encrypted <https://github.com/mozilla/sops/pull/973>`_
+
+To install it, do::
+
+    go install github.com/tozd/sops/v3/cmd/sops@tozd
+
+If you are using it as a dependency, you can also do find/replace of ``go.mozilla.org/sops/v3``
+with ``github.com/tozd/sops/v3`` in your code.
+
+~~~~
+
 **sops** is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY
 formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault, age, and PGP.
 (`demo <https://www.youtube.com/watch?v=YTEVyLXFiq0>`_)
@@ -9,8 +24,8 @@ formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault, age, and PGP.
 
 ------------
 
-.. image:: https://pkg.go.dev/badge/go.mozilla.org/sops/v3.svg
-	:target: https://pkg.go.dev/go.mozilla.org/sops/v3
+.. image:: https://pkg.go.dev/badge/github.com/tozd/sops/v3.svg
+	:target: https://pkg.go.dev/github.com/tozd/sops/v3
 
 Download
 --------
@@ -25,9 +40,9 @@ For the adventurous, unstable features are available in the `develop` branch, wh
 
 .. code:: bash
 
-	$ mkdir -p $GOPATH/src/go.mozilla.org/sops/
-        $ git clone https://github.com/mozilla/sops.git $GOPATH/src/go.mozilla.org/sops/
-        $ cd $GOPATH/src/go.mozilla.org/sops/
+	$ mkdir -p $GOPATH/src/github.com/tozd/sops/
+        $ git clone https://github.com/tozd/sops.git $GOPATH/src/github.com/tozd/sops/
+        $ cd $GOPATH/src/github.com/tozd/sops/
         $ git checkout develop
         $ make install
 
@@ -44,7 +59,7 @@ If you don't have Go installed, set it up with:
 
 Or whatever variation of the above fits your system and shell.
 
-To use **sops** as a library, take a look at the `decrypt package <https://pkg.go.dev/go.mozilla.org/sops/v3/decrypt>`_.
+To use **sops** as a library, take a look at the `decrypt package <https://pkg.go.dev/github.com/tozd/sops/v3/decrypt>`_.
 
 .. sectnum::
 .. contents:: Table of Contents

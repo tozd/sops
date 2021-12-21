@@ -1,4 +1,4 @@
-package ini //import "go.mozilla.org/sops/v3/stores/ini"
+package ini //import "github.com/tozd/sops/v3/stores/ini"
 
 import (
 	"bytes"
@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"go.mozilla.org/sops/v3"
-	"go.mozilla.org/sops/v3/stores"
+	"github.com/tozd/sops/v3"
+	"github.com/tozd/sops/v3/stores"
 	"gopkg.in/ini.v1"
 )
 

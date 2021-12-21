@@ -1,4 +1,4 @@
-module go.mozilla.org/sops/v3
+module github.com/tozd/sops/v3
 
 go 1.19
 

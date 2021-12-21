@@ -3,9 +3,9 @@ package groups
 import (
 	"os"
 
-	"go.mozilla.org/sops/v3"
-	"go.mozilla.org/sops/v3/cmd/sops/common"
-	"go.mozilla.org/sops/v3/keyservice"
+	"github.com/tozd/sops/v3"
+	"github.com/tozd/sops/v3/cmd/sops/common"
+	"github.com/tozd/sops/v3/keyservice"
 )
 
 // AddOpts are the options for adding a key group to a SOPS file
