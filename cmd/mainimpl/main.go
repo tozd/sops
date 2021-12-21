@@ -1,4 +1,4 @@
-package main //import "github.com/tozd/sops/v3/cmd/sops"
+package mainimpl //import "github.com/tozd/sops/v3/cmd/mainimpl"
 
 import (
 	encodingjson "encoding/json"
@@ -47,7 +47,7 @@ func init() {
 	log = logging.NewLogger("CMD")
 }
 
-func main() {
+func Main(arguments []string) {
 	cli.VersionPrinter = version.PrintVersion
 	app := cli.NewApp()
 
@@ -1031,7 +1031,7 @@ func main() {
 		_, err = outputFile.Write(output)
 		return toExitError(err)
 	}
-	err := app.Run(os.Args)
+	err := app.Run(arguments)
 	if err != nil {
 		log.Fatal(err)
 	}
