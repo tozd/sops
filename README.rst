@@ -6,6 +6,7 @@ the following features:
 
 * `Support using comments to select parts to encrypt <https://github.com/mozilla/sops/pull/974>`_
 * `Add --mac-only-encrypted to compute MAC only over values which end up encrypted <https://github.com/mozilla/sops/pull/973>`_
+* Indents YAML files by 2 spaces instead of 4
 
 To install it, do::
 

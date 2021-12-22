@@ -50,13 +50,13 @@ var BRANCHES = sops.TreeBranches{
 
 var COMMENT_1 = []byte(`# test
 a:
-    b: null
-    # foo
+  b: null
+  # foo
 `)
 
 var COMMENT_2 = []byte(`a:
-    # foo
-    b: null
+  # foo
+  b: null
 `)
 
 var COMMENT_3_IN = []byte(`## Configuration for prometheus-node-exporter subchart
@@ -74,13 +74,13 @@ prometheus-node-exporter:
 var COMMENT_3_OUT = []byte(`## Configuration for prometheus-node-exporter subchart
 ##
 prometheus-node-exporter:
-    podLabels:
-        ## Add the 'node-exporter' label to be used by serviceMonitor to match standard common usage in rules and grafana dashboards
-        ##
-        jobLabel: node-exporter
-    extraArgs:
-        - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+)($|/)
-        - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|sysfs|tracefs)$
+  podLabels:
+    ## Add the 'node-exporter' label to be used by serviceMonitor to match standard common usage in rules and grafana dashboards
+    ##
+    jobLabel: node-exporter
+  extraArgs:
+    - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+)($|/)
+    - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|sysfs|tracefs)$
 `)
 
 var COMMENT_4 = []byte(`# foo
@@ -93,9 +93,9 @@ key: value
 
 // The following is a regression test for https://github.com/mozilla/sops/issues/865
 var COMMENT_6 = []byte(`a:
-    - a
-    # I no longer get duplicated
-    - {}
+  - a
+  # I no longer get duplicated
+  - {}
 `)
 
 var COMMENT_6_BRANCHES = sops.TreeBranches{
